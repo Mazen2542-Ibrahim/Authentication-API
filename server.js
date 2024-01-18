@@ -6,7 +6,7 @@ import httpStatusCodes from "http-status-codes";
 import api from "./src/routes/index.js";
 import CustomError from "./src/helper/CustomError.js";
 import { PORT } from "./src/config/index.js";
-import globalErrorHandler from "./src/controller/error.controller.js";
+import globalErrorHandler from "./src/controller/error.js";
 
 import connectToMongoDB from "./src/config/dbConn.js";
 connectToMongoDB();

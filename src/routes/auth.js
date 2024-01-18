@@ -7,7 +7,7 @@ import {
 } from "../validations/validationSchema.js";
 import verifyToken from "../middlewares/verifyToken.js";
 
-import { register, login, logout } from "../controller/auth.controller.js";
+import { register, login, logout } from "../controller/auth.js";
 
 const router = express.Router();
 
