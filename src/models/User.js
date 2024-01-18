@@ -60,6 +60,7 @@ UserSchema.pre("save", function (next) {
 UserSchema.methods.generateAccessJWT = function () {
   let payload = {
     id: this._id,
+    role: this.role,
   };
   return jwt.sign(payload, SECRET_ACCESS_TOKEN, {
     expiresIn: `${tokenExpire}m`,

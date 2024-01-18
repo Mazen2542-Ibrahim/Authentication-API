@@ -7,7 +7,8 @@ import auth from "./auth.js";
 import users from "./users.js";
 
 import verifyToken from "../middlewares/verifyToken.js";
-import User from "../models/User.js";
+import permit from "../middlewares/permit.js";
+import { Roles } from "../helper/constants.js";
 
 const api = express();
 
@@ -21,20 +22,6 @@ api.get("/", (req, res, next) => {
 });
 
 api.use("/auth", auth);
-api.use("/users", verifyToken, users);
-
-// api.get(
-//   "/api/v1/dashboard",
-//   verifyToken,
-//   asyncErrorHandler(async (req, res, next) => {
-//     const user = await User.findById(req.userId, "-password");
-
-//     res.status(httpStatusCodes.OK).json({
-//       status: "success",
-//       message: `welcome ${user.first_name} ${user.last_name} to the Dashboard.`,
-//       data: [user],
-//     });
-//   })
-// );
+api.use("/users", verifyToken, permit(Roles.ADMIN), users);
 
 export default api;
