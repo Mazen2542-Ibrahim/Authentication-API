@@ -22,6 +22,7 @@ api.get("/", (req, res, next) => {
 });
 
 api.use("/auth", auth);
+
 api.use("/users", verifyToken, permit(Roles.ADMIN), users);
 
 export default api;
